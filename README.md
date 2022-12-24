@@ -1,4 +1,4 @@
-<h1 align="center">E-Book application using Angluar, NodeJs, ExpressJS and MongoDB </h1>
+<h1 align="center">E-Book application using Angluar, NodeJs, Express and MongoDB </h1>
 
 <p>
   <img src="http://img.shields.io/static/v1?label=School%20year&message=2021/2022&color=informational"/>
