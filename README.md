@@ -1,4 +1,4 @@
-<h1 align="center">Practical Work on Programação em Ambiente Web (Programming in Web Environment)</h1>
+<h1 align="center">E-Book application using angular and expressJs</h1>
 
 <p>
   <img src="http://img.shields.io/static/v1?label=School%20year&message=2021/2022&color=informational"/>
@@ -34,21 +34,7 @@ npm install
 ng serve --open
 ```
 
----
+--
 
-<h2>Authors</h2>
 
-<h3>
-  Gonçalo Oliveira
-  <a href="https://github.com/oliveira1712?tab=followers">
-    <img src="https://img.shields.io/github/followers/oliveira1712.svg?style=social&label=Follow" />
-  </a>
-</h3>
-
-<h3>
-  Jorge Correia
-  <a href="https://github.com/jorgeMFC?tab=followers">
-    <img src="https://img.shields.io/github/followers/jorgeMFC.svg?style=social&label=Follow" />
-  </a>
-</h3>
 
