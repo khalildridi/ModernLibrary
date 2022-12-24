@@ -1,0 +1,156 @@
+<div mat-dialog-title>
+  <div class="flex justify-between">
+    <h2>Book QuickView</h2>
+    <mat-icon
+      class="cursor-pointer rounded hover:bg-gray-200 transition duration-250"
+      mat-dialog-close
+      >close
+    </mat-icon>
+  </div>
+</div>
+<mat-dialog-content>
+  <div
+    class="flex text-base text-left transform transition w-full md:max-w-2x lg:max-w-4xl"
+  >
+    <div
+      class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8"
+    >
+      <div
+        class="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-4"
+      >
+        <img
+          [src]="'http://localhost:3000/images/uploads/' + book.cover"
+          alt=""
+          class="object-center object-cover"
+        />
+      </div>
+      <div class="sm:col-span-8 lg:col-span-8">
+        <h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">
+          {{ book.title }}
+        </h2>
+
+        <div
+          *ngIf="book?.new! + book?.worn! <= 10 && book?.new! + book?.worn! > 0"
+          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-2 mt-1 mr-1 bg-yellow-200 text-yellow-700 rounded-lg"
+        >
+          <mat-icon> bar_chart</mat-icon>
+          Low Stock
+        </div>
+        <div
+          *ngIf="book?.new! + book?.worn! == 0"
+          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-2 mt-1 mr-1 bg-red-200 text-red-700 rounded-lg"
+        >
+          <mat-icon> bar_chart</mat-icon>
+          No Stock
+        </div>
+        <div
+          *ngIf="book?.new! + book?.worn! > 10"
+          class="text-xs inline-flex items-center font-bold leading-sm uppercase px-2 mt-1 mr-1 bg-green-200 text-green-700 rounded-lg"
+        >
+          <mat-icon> bar_chart</mat-icon>
+          In Stock
+        </div>
+
+        <p class="mt-2">
+          {{ book.synopsis }}
+        </p>
+
+        <p class="mt-1 text-xs">{{ book.author }}</p>
+
+        <section class="mt-4">
+          <!-- Reviews -->
+          <div>
+            <h4 class="sr-only">Reviews</h4>
+            <div class="flex items-center">
+              <div class="flex items-center">
+                <mat-icon class="text-yellow-400">star</mat-icon>
+                <mat-icon class="text-yellow-400">star</mat-icon>
+                <mat-icon class="text-yellow-400">star</mat-icon>
+                <mat-icon class="text-yellow-400">star</mat-icon>
+                <mat-icon class="text-gray-200">star</mat-icon>
+              </div>
+              <p class="sr-only">3.9 out of 5 stars</p>
+              <a
+                href="#"
+                class="ml-3 text-sm font-medium text-teal-600 hover:text-teal-500"
+                >117 reviews</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-4">
+          <div id="conditions" class="flex justify-between gap-2">
+            <button
+              [disabled]="book.new == 0"
+              (click)="newCondition.classList.toggle('activeSelection')"
+              class="grow relative block border w-1/2 p-4 border-gray-300 rounded-lg cursor-pointer focus:outline-none"
+            >
+              <div
+                class="text-base font-medium text-gray-900 flex justify-between mb-3"
+              >
+                <span>New</span>
+                <span>{{ book.price!.toFixed(2) }} €</span>
+              </div>
+              <p class="mt-1 text-left text-sm text-gray-500">
+                This book is completely new
+              </p>
+              <!--
+                              Active: "border", Not Active: "border-2"
+                              Checked: "border-indigo-500", Not Checked: "border-transparent"
+                            -->
+              <div
+                #newCondition
+                class="absolute -inset-px rounded-lg border-2 border-transparent pointer-events-none"
+                aria-hidden="true"
+              ></div>
+            </button>
+
+            <button
+              [disabled]="book.worn == 0"
+              (click)="wornCondition.classList.toggle('activeSelection')"
+              class="grow relative block border border-gray-300 rounded-lg w-1/2 p-4 cursor-pointer focus:outline-none w-50"
+            >
+              <div
+                class="text-base font-medium text-gray-900 flex justify-between mb-3"
+              >
+                <span>Worn</span>
+                <span>{{ (book?.price! * 0.75).toFixed(2) }} €</span>
+              </div>
+              <p class="mt-1 text-sm text-gray-500">
+                This book might have some damage
+              </p>
+
+              <div
+                #wornCondition
+                class="absolute -inset-px rounded-lg border-2 border-transparent pointer-events-none"
+                aria-hidden="true"
+              ></div>
+            </button>
+          </div>
+
+          <button
+            type="submit"
+            mat-dialog-close
+            cdkFocusInitial
+            (click)="addItem()"
+            class="mt-3 w-full bg-orange-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-orange-700 focus:outline-none"
+          >
+            <span class="mr-2"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                /></svg
+            ></span>
+            Add to cart
+          </button>
+        </section>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

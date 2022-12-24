@@ -1,0 +1,74 @@
+<div mat-dialog-title>
+    <div class="flex min-w-2xl justify-between">
+        <h2>Shopping Cart</h2>
+        <mat-icon class="cursor-pointer rounded hover:bg-gray-200 transition duration-250" mat-dialog-close>close
+        </mat-icon>
+    </div>
+</div>
+<mat-dialog-content class="mat-typography">
+    <div class="block text-base text-left transform transition w-full sm:inline-block sm:align-middle">
+        <section aria-labelledby="cart-heading">
+            <ul role="list" class="divide-y divide-gray-200 px-2">
+                <li class="py-8 flex text-sm sm:items-center" *ngFor="let item of newItems; index as i">
+                    <img [src]="'http://localhost:3000/images/uploads/' + item.cover"
+                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                        class="flex-none w-16 h-24 rounded-lg border border-gray-200 sm:w-24 sm:h-32" />
+                    <div
+                        class="ml-4 flex-auto grid gap-y-3 gap-x-5 grid-rows-1 grid-cols-1 items-start sm:ml-6 sm:flex sm:gap-0 sm:items-center">
+                        <div class="flex-auto row-end-1 sm:pr-6">
+                            <div class="font-medium text-gray-900">
+                                <h3 class="text-xl font-medium">{{ item.title }}</h3>
+                                <h4>{{ item.price }} €</h4>
+                            </div>
+                        </div>
+                        <p
+                            class="row-end-2 row-span-2 font-medium text-gray-900 sm:ml-6 sm:order-1 sm:flex-none sm:w-1/3 sm:text-right">
+                            {{ calcItemPrice(item) }} €
+                        </p>
+                        <div class="flex items-center sm:flex-none sm:block sm:text-center">
+                            <div class="flex gap-x-2">
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-medium">New</span>
+                                    <input type="number" min="0" [max]="item.maxQtNew!"
+                                        class="text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow-lg focus:ring-orange-500 outline-none focus:outline-none focus:ring w-16"
+                                        [(ngModel)]="item.new" onkeypress="return false" (keyup)="updateItem(item)">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-medium">Worn</span>
+                                    <input type="number" min="0" [max]="item.maxQtWorn!"
+                                        class="text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow-lg focus:ring-orange-500 outline-none focus:outline-none focus:ring w-16"
+                                        [(ngModel)]="item.worn" onkeypress="return false" (keyup)="updateItem(item)">
+                                </div>
+                            </div>
+
+                            <button type="button" (click)="removeItem(i)"
+                                class="ml-4 font-medium text-teal-600 hover:text-teal-500 sm:ml-0 sm:mt-2">
+                                <span>Remove</span>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="summary-heading" class="px-2 m-auto">
+            <div class="bg-gray-50 p-6 sm:p-8 sm:rounded-lg w-full">
+                <div class="flex-auto">
+                    <dl class="-my-4 text-sm divide-y divide-gray-200">
+                        <div class="py-4 flex items-center justify-between">
+                            <dt class="text-base font-medium text-gray-900">Order total</dt>
+                            <dd class="text-base font-medium text-gray-900">{{ calcTotalPrice() }} €</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-8 flex justify-end px-2">
+            <button mat-dialog-close routerLink="/checkout" type="button"
+                class="bg-orange-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-orange-700 focus:outline-none">
+                Continue to Payment
+            </button>
+        </div>
+    </div>
+</mat-dialog-content>

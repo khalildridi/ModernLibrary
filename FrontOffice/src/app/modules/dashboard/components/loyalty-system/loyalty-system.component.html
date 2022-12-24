@@ -1,0 +1,308 @@
+<div class="py-6 px-4 space-y-6 sm:p-10">
+  <div>
+    <h3
+      class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl"
+    >
+      Loyalty System
+    </h3>
+    <p class="mt-1 text-sm text-gray-500">
+      Here you can see how the loyalty system works and how the discounts are
+      applied!
+    </p>
+  </div>
+  <div>
+    <h3 class="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl">
+      How can I aquire points?
+    </h3>
+    <p class="mt-2 text-gray-500">
+      For each transaction that a user makes (buying or selling books), the user
+      receives 1 point + (the total price of the transaction * 15%). For
+      example, if a user makes a purchase worth 50€, that user will get 1 + (50
+      * 15%) = 8 points.
+    </p>
+  </div>
+  <div>
+    <h3 class="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl">
+      How can I use my points?
+    </h3>
+    <p class="mt-2 text-gray-500">
+      The points are used to get discounts in purchases, on the checkout screen
+      there is a checkbox to apply the discount if certain criteria are met.
+      Discounts cost 10 points and the user receives a % of discount based on
+      their age group.
+    </p>
+    <p class="mt-1 text-gray-500">
+      To be able to get the discount the user needs to meet a criteria from the
+      second group of the table (Number of purchased and/or number of sold
+      books). For example:
+    </p>
+    <ul class="ml-8 list-disc text-gray-500">
+      <li>
+        If the user has 10 points, is an adult, makes a transaction of 50 € and
+        has bought 10 books in the past but didin't sell any books, he will
+        receive a discount of 25%.
+      </li>
+      <li>
+        If the user is an adult has less than 10 points, makes a transaction of
+        50 € and has bought 10 books in the past but didin't sell any books, he
+        won't be able to receive discounts.
+      </li>
+    </ul>
+  </div>
+
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto lg:w-9/12 sm:-mx-6 lg:mx-auto">
+      <div class="py-2 align-middle min-w-full inline-block sm:px-6 lg:px-8">
+        <div
+          class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+        >
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Criteria
+                </th>
+                <th
+                  *ngFor="let percent of conditions.percentages"
+                  scope="col"
+                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  {{ percent }}%
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td
+                  colspan="5"
+                  class="px-6 py-4 text-center border-b-2 bg-gray-50 shadow whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  Age
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.ages[0] }}
+                </td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.ages[1] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.ages[2] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.ages[3] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  colspan="5"
+                  class="px-6 py-4 text-center border-b-2 bg-gray-50 shadow whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  Number of purchased books
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numAquisitions[0] }}
+                </td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numAquisitions[1] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numAquisitions[2] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numAquisitions[3] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  colspan="5"
+                  class="px-6 py-4 text-center border-b-2 bg-gray-50 shadow whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  Number of sold books
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numSoldBooks[0] }}
+                </td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numSoldBooks[1] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numSoldBooks[2] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                >
+                  {{ conditions.numSoldBooks[3] }}
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                ></td>
+                <td
+                  class="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500"
+                >
+                  X
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

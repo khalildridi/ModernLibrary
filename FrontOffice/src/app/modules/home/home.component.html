@@ -1,0 +1,243 @@
+<!-- Hero section -->
+<div
+  class="relative h-screen w-full flex items-center justify-center text-center bg-cover bg-center"
+  style="
+    background-image: url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1290&q=80);
+  "
+>
+  <div
+    class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"
+  ></div>
+
+  <div class="px-4 sm:px-6 lg:px-8 z-10">
+    <div class="text-center">
+      <h2
+        class="text-4xl tracking-tight leading-10 font-medium sm:text-5xl text-white sm:leading-none md:text-6xl"
+      >
+        Simply the best
+        <span class="text-orange-600 font-bold">Modern Library</span>
+      </h2>
+      <p
+        class="text-xl mt-3 text-white sm:mt-5 sm:text-2xl sm:max-w-2xl sm:mx-auto md:mt-5"
+      >
+        The easiest way to buy and sell books! With our loyalty system you can
+        get free shipping or discounts in your next purchase.
+      </p>
+      <div class="mt-5 sm:mt-8 sm:flex justify-center">
+        <div class="rounded-md shadow">
+          <a
+            routerLink="/books"
+            class="w-full flex items-center justify-center px-8 py-3 border border-transparent font-medium text-lg leading-6 rounded text-white bg-orange-600 hover:bg-orange-700 transition duration-150 ease-in-out md:py-4 md:px-10"
+          >
+            Get started
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonial/stats section -->
+<div class="relative mt-20">
+  <div
+    class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start"
+  >
+    <div class="relative sm:py-16 lg:py-0">
+      <div
+        aria-hidden="true"
+        class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
+      >
+        <div
+          class="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"
+        ></div>
+        <svg
+          class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
+          width="404"
+          height="392"
+          fill="none"
+          viewBox="0 0 404 392"
+        >
+          <defs>
+            <pattern
+              id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
+              x="0"
+              y="0"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect
+                x="0"
+                y="0"
+                width="4"
+                height="4"
+                class="text-gray-200"
+                fill="currentColor"
+              />
+            </pattern>
+          </defs>
+          <rect
+            width="404"
+            height="392"
+            fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
+          />
+        </svg>
+      </div>
+      <div
+        class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20"
+      >
+        <!-- Testimonial card-->
+        <div class="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
+          <img
+            class="absolute inset-0 h-full w-full object-cover"
+            src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+      <!-- Content area -->
+      <div class="pt-12 sm:pt-16 lg:pt-20">
+        <h2
+          class="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl"
+        >
+          On a mission
+        </h2>
+        <div class="mt-6 text-gray-500 space-y-6">
+          <p class="text-lg">
+            Modern Library main objective is to sell books to their customers
+            for cheaper prices and benefit customers that are loyal to us with
+            our loyalty system.
+          </p>
+          <p class="text-lg">
+            Modern Library buys books from their customers in order to resell
+            them to other's, making less waste to the environment.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <a
+          routerLink="/books"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-base font-medium text-orange-500"
+        >
+        View Books &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Logo cloud section -->
+<div class="mt-20">
+  <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
+    <mat-divider></mat-divider>
+    <h3 class="ml-3 md:ml-12 mt-3 md:mt-8 text-left text-3xl font-bold">
+      Recent Books
+    </h3>
+    <swiper [config]="config">
+      <ng-template swiperSlide *ngFor="let book of books.reverse()">
+        <app-book-card [book]="book"></app-book-card>
+      </ng-template>
+    </swiper>
+  </div>
+</div>
+
+<!-- CTA section -->
+<div class="relative mt-24 sm:py-16">
+  <div aria-hidden="true" class="hidden sm:block">
+    <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50 rounded-r-3xl"></div>
+    <svg
+      class="absolute top-8 left-1/2 -ml-3"
+      width="404"
+      height="392"
+      fill="none"
+      viewBox="0 0 404 392"
+    >
+      <defs>
+        <pattern
+          id="8228f071-bcee-4ec8-905a-2a059a2cc4fb"
+          x="0"
+          y="0"
+          width="20"
+          height="20"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            class="text-gray-200"
+            fill="currentColor"
+          />
+        </pattern>
+      </defs>
+      <rect
+        width="404"
+        height="392"
+        fill="url(#8228f071-bcee-4ec8-905a-2a059a2cc4fb)"
+      />
+    </svg>
+  </div>
+  <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+    <div
+      class="relative rounded-2xl px-6 py-10 bg-orange-500 overflow-hidden shadow-xl sm:px-12 sm:py-20"
+    >
+      <div aria-hidden="true" class="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0">
+        <svg
+          class="absolute inset-0 h-full w-full"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 1463 360"
+        >
+          <path
+            class="text-orange-400 text-opacity-40"
+            fill="currentColor"
+            d="M-82.673 72l1761.849 472.086-134.327 501.315-1761.85-472.086z"
+          />
+          <path
+            class="text-orange-600 text-opacity-40"
+            fill="currentColor"
+            d="M-217.088 544.086L1544.761 72l134.327 501.316-1761.849 472.086z"
+          />
+        </svg>
+      </div>
+      <div class="relative">
+        <div class="sm:text-center">
+          <h2
+            class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl"
+          >
+            Sell your books instead of throwing them away!
+          </h2>
+          <!-- <p class="mt-6 mx-auto max-w-2xl text-lg text-orange-100 text-center">Contact us so we can
+                        negotiate.</p> -->
+        </div>
+        <form action="#" class="mt-12 sm:mx-auto sm:max-w-lg sm:flex">
+          <div class="min-w-0 flex-1">
+            <label for="cta-email" class="sr-only">Email address</label>
+            <input
+              id="cta-email"
+              type="email"
+              class="block w-full border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-orange-500"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="mt-4 sm:mt-0 sm:ml-3">
+            <button
+              type="submit"
+              class="block w-full rounded-md border border-transparent px-5 py-3 bg-teal-600 text-base font-medium text-white shadow hover:bg-teal-700 focus:outline-none transition-colors duration-300 transform focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-orange-500 sm:px-10"
+            >
+              Notify me
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

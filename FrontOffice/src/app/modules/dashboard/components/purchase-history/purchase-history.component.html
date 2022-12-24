@@ -1,0 +1,125 @@
+<div class="py-6 px-4 space-y-6 sm:p-10">
+  <div class="px-4 sm:px-0">
+    <h1
+      class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl"
+    >
+      Purchase history
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">
+      Check the status of recent purchases.
+    </p>
+  </div>
+
+  <div class="mt-16">
+    <div class="space-y-16 sm:space-y-24">
+      <div
+        accordion-group=""
+        ng-init="status = {isOpen: false}"
+        is-open="status.isOpen"
+        *ngFor="let purchase of user.purchases?.reverse()"
+      >
+        <div
+          class="bg-gray-50 px-4 py-6 sm:rounded-lg sm:p-6 md:flex md:items-center md:justify-between md:space-x-6 lg:space-x-8"
+        >
+          <dl
+            class="divide-y divide-gray-200 space-y-4 text-sm text-gray-600 flex-auto md:divide-y-0 md:space-y-0 md:grid md:grid-cols-5 md:gap-x-6 lg:w-4/5 lg:flex-none lg:gap-x-6"
+          >
+            <div class="flex col-span-2 justify-between md:inline-block">
+              <dt class="font-medium text-gray-900">Order number</dt>
+              <dd class="md:mt-1">{{ purchase._id }}</dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Date placed</dt>
+              <dd class="md:mt-1">
+                <time datetime="2021-01-22">{{ purchase.date | date }}</time>
+              </dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Discount</dt>
+              <dd class="md:mt-1">{{ purchase.discount.toFixed(2) }} €</dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Total amount</dt>
+              <dd class="md:mt-1">{{ purchase.totalPrice.toFixed(2) }}€</dd>
+            </div>
+          </dl>
+
+          <!-- <div class="space-y-4 mt-6 sm:flex sm:space-x-4 sm:space-y-0 md:mt-0">
+            <a
+              class="cursor-pointer mx-auto w-fit flex items-center justify-center bg-teal-600 border border-gray-300 rounded-md shadow-sm text-xs text-white hover:bg-teal-700 focus:outline-none"
+            >
+              <mat-icon>add</mat-icon>
+            </a>
+          </div> -->
+        </div>
+
+        <div class="mt-6 flow-root px-4 sm:mt-10 sm:px-0">
+          <div
+            accordion-heading=""
+            class="-my-6 divide-y divide-gray-300 sm:-my-10"
+          >
+            <div class="flex py-6 sm:py-10" *ngFor="let book of purchase.books">
+              <div class="min-w-0 flex-1 lg:flex lg:flex-col">
+                <div class="lg:flex-1">
+                  <div class="sm:flex">
+                    <div>
+                      <h4 class="font-medium text-gray-900">
+                        {{ book.title }}
+                      </h4>
+                      <p class="hidden mt-2 text-sm text-gray-500 sm:block">
+                        This durable double-walled insulated tumbler keeps your
+                        beverages at the perfect temperature all day long. Hot,
+                        cold, or even lukewarm if you&#039;re weird like that,
+                        this bottle is ready for your next adventure.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2 flex text-sm font-medium sm:mt-4">
+                    <a
+                      [routerLink]="'/books/details/' + book._id"
+                      class="cursor-pointer text-teal-600 hover:text-teal-500"
+                      >View Product</a
+                    >
+                  </div>
+                </div>
+                <div class="sm:flex sm:space-x-12">
+                  <div class="mt-6 font-medium text-sm sm:text-base">
+                    <p>Amount of books</p>
+                    <p
+                      *ngIf="book.new > 0"
+                      class="mt-1 font-medium text-sm text-gray-900 sm:mt-0"
+                    >
+                      {{ book.new }} <span>new </span>({{ book.price }}€ each)
+                    </p>
+                    <p
+                      *ngIf="book.worn > 0"
+                      class="mt-1 font-medium text-sm text-gray-900 sm:mt-0"
+                    >
+                      {{ book.worn }} <span>worn </span>({{
+                        (book.price * 0.75).toFixed(2)
+                      }}€ each)
+                    </p>
+                  </div>
+                  <div
+                    class="hidden sm:block mt-6 font-medium text-sm sm:text-base"
+                  >
+                    <p>State of delivery</p>
+                    <p class="text-sm">Out for delivery</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ml-4 flex-shrink-0 sm:m-0 sm:mr-6 sm:order-first">
+                <img
+                  [src]="'http://localhost:3000/images/uploads/' + book?.cover"
+                  class="col-start-2 col-end-3 sm:col-start-1 sm:row-start-1 sm:row-span-2 w-20 h-28 rounded-lg object-center object-cover sm:w-28 sm:h-40 lg:w-36 lg:h-52"
+                />
+              </div>
+            </div>
+
+            <!-- More products... -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

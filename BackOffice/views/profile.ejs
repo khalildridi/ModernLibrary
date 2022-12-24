@@ -1,0 +1,247 @@
+<div class="flex items-center justify-center h-screen">
+  <div class="w-7/12 bg-white rounded-lg border border-gray-200 shadow-md">
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+      <ul class="flex flex-wrap -mb-px text-sm text-center" id="tabExample" role="tablist">
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+            id="profile-tab" type="button" role="tab" aria-controls="profile" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+            </svg>Profile
+          </button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+            id="transaction-tab" type="button" role="tab" aria-controls="transaction" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>Transaction History
+          </button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+            id="loyalty-tab" type="button" role="tab" aria-controls="loyalty" aria-selected="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+            </svg>Loyalty System
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div id="tabContentExample" class="max-w-full">
+      <div class="hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="flex items-center mx-8 pt-6 pb-10">
+          <div class="w-1/5">
+            <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="/images/hero_section.jpg" alt="Bonnie image" />
+          </div>
+          <div class="w-full">
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              <%= user.name %>
+            </h5>
+            <div class="flex flex-row space-x-2">
+              <div class="flex flex-col mr-20">
+                <p class="text-base font-semibold text-black">
+                  Email: <span class="text-sm text-gray-500">
+                    <%= user.email %>
+                  </span>
+                </p>
+                <p class="text-base font-semibold text-black">
+                  Contact: <span class="text-sm text-gray-500">
+                    <%= user.contact %>
+                  </span>
+                </p>
+              </div>
+              <div class="flex flex-col">
+                <p class="text-base font-semibold text-black">
+                  Birthday:
+                  <span class="text-sm text-gray-500">
+                    <%= user.date_of_birth.toDateString() %>
+                  </span>
+                </p>
+                <p class="text-base font-semibold text-black">
+                  Points: <span class="text-sm text-gray-500">
+                    <%= user.points %>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div class="flex mt-4 space-x-3 lg:mt-6">
+              <a href="#"
+                class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-orange-600 rounded-lg hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="transaction" role="tabpanel" aria-labelledby="transaction-tab">
+        <div class="flex flex-col mx-8 pt-6 pb-10">
+          <% if(transactions.length>0) { %>
+            <h3
+              class="relative text-center overflow-x-auto mx-auto w-3/4 text-xl font-medium text-gray-900 dark:text-white mb-4">
+              Transactions History
+            </h3>
+            <div class="relative overflow-x-auto mx-auto w-3/4 sm:rounded-lg shadow-lg">
+              <table class="w-full text-left text-gray-500 dark:text-gray-400 shadow-md">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">Cover</th>
+                    <th scope="col" class="px-6 py-3">Title</th>
+                    <th scope="col" class="px-6 py-3">Price</th>
+                    <th scope="col" class="px-6 py-3">New</th>
+                    <th scope="col" class="px-6 py-3">Worn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i=0; i<transactions.length;i++) { %>
+
+                    <tr
+                      class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                      <td class="px-6 py-4">
+                        <img src="images/uploads/<%= transactions[i].cover %>" class="rounded" alt="" width="50px"
+                          srcset="">
+                      </td>
+                      <th class="px-6 py-4">
+                        <%= transactions[i].title %>
+                      </th>
+                      <td class="px-6 py-4">
+                        <%= transactions[i].price %>
+                      </td>
+                      <td class="px-6 py-4">
+                        <%= transactions[i].new %>
+                      </td>
+                      <td class="px-6 py-4">
+                        <%= transactions[i].worn %>
+                      </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <% } else { %>
+          <p>No transactions available.</p>
+          <% } %>
+      </div>
+      <div class="hidden" id="loyalty" role="tabpanel" aria-labelledby="loyalty-tab">
+        <div class="flex flex-col mx-8 pt-6 pb-10">
+          <h3
+            class="relative text-center overflow-x-auto mx-auto w-3/4 text-xl font-medium text-gray-900 dark:text-white mb-4">
+            Conditions to apply discounts
+          </h3>
+          <div class="relative overflow-x-auto mx-auto w-3/4 sm:rounded-lg shadow-lg">
+            <table class="w-full text-left text-gray-500 dark:text-gray-400 shadow-md">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" class="px-6 py-3"></th>
+                  <th scope="col" class="px-6 py-3">
+                    <%= loyaltyConditions[0]["percentages"][0] %>%
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    <%= loyaltyConditions[0]["percentages"][1] %>%
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    <%= loyaltyConditions[0]["percentages"][2] %>%
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    <%= loyaltyConditions[0]["percentages"][3] %>%
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                  <th class="px-6 py-4">Age</th>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["ages"][0] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["ages"][1] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["ages"][2] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["ages"][3] %>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                  <th class="px-6 py-4">Number of acquisitions</th>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numAcquisitions"][0] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numAcquisitions"][1] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numAcquisitions"][2] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numAcquisitions"][3] %>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                  <th class="px-6 py-4">Number of books sold</th>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numSoldBooks"][0] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numSoldBooks"][1] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numSoldBooks"][2] %>
+                  </td>
+                  <td class="px-6 py-4">
+                    <%= loyaltyConditions[0]["numSoldBooks"][3] %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tabElements = [
+    {
+      id: "profile",
+      triggerEl: document.querySelector("#profile-tab"),
+      targetEl: document.querySelector("#profile"),
+    },
+    {
+      id: "transaction",
+      triggerEl: document.querySelector("#transaction-tab"),
+      targetEl: document.querySelector("#transaction"),
+    },
+    {
+      id: "loyalty",
+      triggerEl: document.querySelector("#loyalty-tab"),
+      targetEl: document.querySelector("#loyalty"),
+    },
+  ];
+
+  const options = {
+    defaultTabId: "profile",
+    activeClasses:
+      "text-orange-600 hover:text-orange-600 dark:text-orange-500 dark:hover:text-orange-400 border-orange-600 dark:border-orange-500",
+    inactiveClasses:
+      "text-gray-400 hover:text-gray-500 dark:text-gray-400 border-gray-400 hover:border-gray-500 dark:border-gray-700 dark:hover:text-gray-300",
+    onShow: () => {
+      console.log("tab is shown");
+    },
+  };
+
+  const tabs = new Tabs(tabElements, options);
+</script>

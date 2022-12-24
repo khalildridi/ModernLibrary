@@ -1,0 +1,89 @@
+<div class="py-6 px-4 space-y-6 sm:p-10">
+  <div>
+    <h3 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+      Personal Information
+    </h3>
+    <p class="mt-1 text-sm text-gray-500">
+      Use a permanent address where you can recieve mail.
+    </p>
+  </div>
+
+  <div class="col-span-3">
+    <label class="block text-sm font-medium text-gray-700"> Photo </label>
+    <p class="mt-1 text-sm text-gray-500">
+      Hover over the image to change the profile picture!
+    </p>
+    <div class="mt-1 flex items-center">
+      <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+        class="h-24 w-24 rounded-md object-center object-cover" />
+    </div>
+  </div>
+
+  <form [formGroup]="accountForm" (submit)="saveChanges()">
+    <div class="grid grid-cols-6 gap-6">
+      <div class="col-span-6 sm:col-span-3">
+        <label for="first-name" class="block text-sm font-medium text-gray-700">Name</label>
+        <input type="text" name="first-name" id="first-name" formControlName="name"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        <span class="text-sm text-red-500 mt-2"
+          *ngIf="accountFormControl['name'].touched && accountFormControl['name'].errors?.['required']">
+          Name is required
+        </span>
+      </div>
+
+      <div class="col-span-6 sm:col-span-3">
+        <label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
+        <input type="text" name="email-address" id="email-address"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
+          value="{{ accountForm.value.email }}" disabled />
+      </div>
+
+      <div class="col-span-6 sm:col-span-3">
+        <label for="country" class="block text-sm font-medium text-gray-700">Phone number</label>
+        <input formControlName="contact" type="number" name="phone-number" id="phone-number"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        <span class="text-sm text-red-500 mt-2"
+          *ngIf="accountFormControl['contact'].touched && accountFormControl['contact'].errors?.['pattern']">
+          Enter a valid phone number
+        </span>
+      </div>
+
+      <div class="col-span-6 sm:col-span-3">
+        <label for="points" class="block text-sm font-medium text-gray-700">Points</label>
+        <input type="text" name="points" id="points"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
+          value="{{ user_points }}" disabled />
+      </div>
+
+      <div class="col-span-6">
+        <label for="street-address" class="block text-sm font-medium text-gray-700">Street address</label>
+        <input formControlName="street" type="text" name="street-address" id="street-address"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+      </div>
+
+      <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+        <input formControlName="city" type="text" name="city" id="city"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+      </div>
+
+      <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+        <label for="region" class="block text-sm font-medium text-gray-700">District</label>
+        <input formControlName="district" type="text" name="region" id="region"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+      </div>
+
+      <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+        <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
+        <input formControlName="zipCode" type="text" name="zip-code" id="zip-code"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+      </div>
+    </div>
+    <div class="mt-4 text-right">
+      <button type="submit"
+        class="bg-orange-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-orange-700 focus:outline-none">
+        Save
+      </button>
+    </div>
+  </form>
+</div>

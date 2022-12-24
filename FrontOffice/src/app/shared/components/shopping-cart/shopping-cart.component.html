@@ -1,0 +1,31 @@
+<div
+    class="md:absolute top-16 mb-4 inset-x-0 mt-px pb-6 bg-white border rounded-md border-gray-200 md:shadow-lg sm:px-2 lg:top-full md:left-auto md:-right-36 lg:mt-3 lg:-mr-1.5 md:w-80 lg:rounded-lg lg:ring-1 lg:ring-black lg:ring-opacity-5">
+    <form class="max-w-2xl mx-auto px-4">
+        <ul role="list" class="divide-y divide-gray-200 text-left max-h-80 overflow-auto">
+            <li class="py-6 flex items-center" *ngFor="let item of items; index as i">
+                <img [src]="'http://localhost:3000/images/uploads/' + item.cover" alt=""
+                    class="flex-none w-12 h-16 rounded-md border border-gray-200" />
+                <div class="ml-4 flex-auto">
+                    <h3 class="font-medium text-gray-900">
+                        <p>{{ item.title }}</p>
+                    </h3>
+                    <p class="text-gray-500">{{ calcItemPrice(item) }} €</p>
+                </div>
+                <div class="ml-4 justify-end">
+                    <mat-icon class="cursor-pointer text-gray-400 hover:text-gray-700" (click)="removeItem(i)">delete
+                    </mat-icon>
+                </div>
+            </li>
+        </ul>
+        <div class="py-4 flex items-center justify-end">
+            <h3 class="font-medium text-gray-900">
+                Total Price:
+                <span class="text-gray-500">{{ calcTotalPrice() }} €</span>
+            </h3>
+        </div>
+        <button type="button" (click)="openShoppingCartModal()"
+            class="w-full bg-orange-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-orange-700 focus:outline-none">
+            View Shopping Cart
+        </button>
+    </form>
+</div>

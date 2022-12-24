@@ -1,0 +1,104 @@
+<%- include('./formModal.ejs') %>
+  <%- include('./deleteModal.ejs') %>
+    <%- include('./sellModal.ejs') %>
+      <%- include('../partials/toastInfo.ejs') %>
+
+        <div class="container mx-auto min-h-screen">
+          <div class="mx-auto flex justify-end my-6 w-3/4">
+            <button type="button" id="createBook"
+              class="bg-orange-100 transition text-orange-500 hover:text-white border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg px-5 py-2 text-center dark:border-orange-300 dark:text-orange-300 cursor-pointer dark:hover:text-white dark:hover:bg-orange-400 dark:focus:ring-orange-900">Create
+              Book</button>
+          </div>
+
+          <div class="mx-auto flex justify-center w-3/4 p-2">
+            <div class="flex px-2 w-full">
+              <span
+                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+              <input type="text" name="search" id="search"
+                class="rounded-none rounded-r-lg border border-gray-300 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 block flex-1 min-w-0 w-full border-gray-300 p-2.5"
+                placeholder="Search by Title, Author or ISBN" />
+            </div>
+            <div class=" flex px-2 w-1/2">
+              <select name="perPage" id="perPage"
+                class="form-select block w-full px-4 mt-1 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:ring-orange-500 focus:outline-none ">
+                <option value="5" disabled selected>Per Page</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="relative overflow-x-auto mx-auto w-3/4 sm:rounded-lg shadow-lg">
+            <table class="w-full text-left text-gray-500 dark:text-gray-400" id="booksTable">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" class="px-6 py-3">
+                    Cover
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Title
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Author
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    ISBN
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    New
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Worn
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="flex justify-end mx-auto w-3/4">
+            <div class="flex flex-col items-end p-5 w-3/4">
+              <span class="text-sm text-gray-700 dark:text-gray-400">
+                Showing <span class="font-semibold text-gray-900 dark:text-white" id="firstEntry">
+                </span> to <span class="font-semibold text-gray-900 dark:text-white" id="lastEntry">
+                </span> of <span class="font-semibold text-gray-900 dark:text-white" id="totalEntries">
+                </span> Entries
+              </span>
+              <div class="inline-flex mt-2 xs:mt-0">
+                <button
+                  class="inline-flex items-center py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:cursor-no-drop"
+                  id="prevPageBtn">
+                  <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  Prev
+                </button>
+                <button
+                  class="inline-flex items-center py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white disabled:cursor-no-drop"
+                  id="nextPageBtn">
+                  Next
+                  <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="javascripts/CRUD/booksAjaxCRUD.js"></script>

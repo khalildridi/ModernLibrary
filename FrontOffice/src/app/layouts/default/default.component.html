@@ -1,0 +1,10 @@
+<div class="min-h-full" style="background-color: #FBFBFD;">
+    <app-header></app-header>
+
+    <!-- class="relative container mx-auto" -->
+    <main [@routeAnimations]="getRouteAnimationData()">
+        <router-outlet></router-outlet>
+    </main>
+
+    <app-footer></app-footer>
+</div>

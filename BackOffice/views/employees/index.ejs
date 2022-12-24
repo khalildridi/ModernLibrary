@@ -1,0 +1,58 @@
+<div class="container mx-auto min-h-screen">
+  <div class="flex justify-end my-6 w-3/4">
+    <a href="/employees/create"
+      class="bg-orange-100 transition text-orange-500 hover:text-white border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg px-5 py-2 text-center dark:border-orange-300 dark:text-orange-300 cursor-pointer dark:hover:text-white dark:hover:bg-orange-400 dark:focus:ring-orange-900">Create
+      Employee</a>
+  </div>
+
+  <% if(employees.length>0) { %>
+    <div class="relative overflow-x-auto mx-auto w-1/2 sm:rounded-lg shadow-lg">
+      <table class="w-full text-left text-gray-500 dark:text-gray-400 shadow-md">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              Name
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Email
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Contact
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Role
+            </th>
+            <th scope="col" class="px-6 py-3">
+              <span class="sr-only">Edit</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<employees.length;i++) { %>
+            <tr
+              class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                <%= employees[i].name %>
+              </th>
+              <td class="px-6 py-4">
+                <%= employees[i].email %>
+              </td>
+              <td class="px-6 py-4">
+                <%= employees[i].contact %>
+              </td>
+              <td class="px-6 py-4">
+                <%= employees[i].role %>
+              </td>
+              <td class="px-6 py-4">
+                <a href="/employees/show/<%= employees[i]._id %>" class="font-medium text-orange-600 dark:text-orange-500
+                  hover:underline">Edit</a>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% } else { %>
+      <div>No employees found.</div>
+      <% } %>
+</div>

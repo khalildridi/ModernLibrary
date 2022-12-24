@@ -1,0 +1,40 @@
+<div class="lg:fixed lg:top-60 mx-auto w-1/2 lg:w-64">
+  <div class="relative flex w-full flex-wrap items-stretch mb-3">
+    <span
+      class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3"
+    >
+      <mat-icon>search</mat-icon>
+    </span>
+    <input
+      type="text"
+      placeholder="Search book, author or ISBN"
+      #searchBooksInput
+      class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow focus:ring-orange-500 outline-none focus:outline-none focus:ring w-full pl-10"
+    />
+  </div>
+
+  <div class="flex flex-col">
+    <h2 class="my-2">Price</h2>
+    <div class="flex justify-between my-2">
+      <input
+        type="number"
+        class="text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow focus:ring-orange-500 outline-none focus:outline-none focus:ring w-16"
+        [(ngModel)]="minValue"
+        (keyup)="reloadBooks()"
+      />
+      <input
+        type="number"
+        class="text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow focus:ring-orange-500 outline-none focus:outline-none focus:ring w-16"
+        [(ngModel)]="maxValue"
+        (keyup)="reloadBooks()"
+      />
+    </div>
+    <ngx-slider
+      [(value)]="minValue"
+      (mouseup)="reloadBooks()"
+      [(highValue)]="maxValue"
+      [options]="options"
+    >
+    </ngx-slider>
+  </div>
+</div>

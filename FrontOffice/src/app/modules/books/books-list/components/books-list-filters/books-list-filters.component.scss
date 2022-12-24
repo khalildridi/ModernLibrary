@@ -1,0 +1,24 @@
+::ng-deep {
+  .ngx-slider .ngx-slider-pointer {
+    background-color: #f97316 !important;
+  }
+
+  .ngx-slider .ngx-slider-pointer:focus {
+    outline: none !important;
+  }
+
+  .ngx-slider .ngx-slider-pointer:focus::after {
+    background-color: white !important;
+  }
+
+  .ngx-slider .ngx-slider-bar {
+    background: #0d9488 !important;
+  }
+  .ngx-slider .ngx-slider-selection {
+    background: orange !important;
+  }
+
+  .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+    background: orange !important;
+  }
+}

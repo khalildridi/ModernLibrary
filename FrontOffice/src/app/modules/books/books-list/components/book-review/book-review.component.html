@@ -1,0 +1,22 @@
+<div class="flex text-sm text-gray-500 space-x-4">
+    <div class="flex-none py-10">
+        <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+            alt="" class="w-10 h-10 bg-gray-100 rounded-full">
+    </div>
+    <div class="flex-1 py-10">
+        <h3 class="font-medium text-gray-900">{{ review.user_name }}</h3>
+        <p><time>{{ review.date | date }}</time></p>
+
+        <div class="flex items-center mt-4">
+            <mat-icon class="text-yellow-400" *ngFor="let _ of [].constructor(review.stars)">star
+            </mat-icon>
+
+            <mat-icon class="text-gray-300" *ngFor="let _ of [].constructor(5 - review.stars!)">star
+            </mat-icon>
+        </div>
+
+        <div class="mt-4 prose prose-sm max-w-none text-gray-500">
+            <p>{{ review.description }}</p>
+        </div>
+    </div>
+</div>

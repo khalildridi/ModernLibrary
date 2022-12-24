@@ -1,0 +1,43 @@
+{
+	"name": "paw-tp-grupo07",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"start": "nodemon ./bin/www",
+		"build": "postcss ./input.css -o public/stylesheets/tailwind.css",
+		"watch": "postcss ./input.css -o public/stylesheets/tailwind.css --watch"
+	},
+	"dependencies": {
+		"@themesberg/tailwind-datepicker": "^1.1.0",
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.20.0",
+		"bson": "^4.6.4",
+		"cookie-parser": "~1.4.4",
+		"cors": "^2.8.5",
+		"debug": "~2.6.9",
+		"dotenv": "^16.0.1",
+		"ejs": "^3.1.7",
+		"express": "~4.16.1",
+		"express-ejs-layouts": "^2.5.1",
+		"express-validator": "^6.14.0",
+		"flowbite": "^1.4.2",
+		"fs": "^0.0.1-security",
+		"http-errors": "~1.6.3",
+		"https": "^1.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.3",
+		"mongoose": "^6.3.0",
+		"mongoose-paginate-v2": "^1.6.3",
+		"morgan": "~1.9.1",
+		"multer": "^1.4.4",
+		"request": "^2.88.2",
+		"stripe": "^9.8.0"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.4",
+		"nodemon": "^2.0.15",
+		"postcss": "^8.4.12",
+		"postcss-cli": "^9.1.0",
+		"tailwindcss": "^3.0.24"
+	}
+}

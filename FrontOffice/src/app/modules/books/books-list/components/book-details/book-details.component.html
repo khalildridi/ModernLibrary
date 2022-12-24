@@ -1,0 +1,163 @@
+<div class="container mx-auto sm:p-6 lg:p-8 pt-20">
+  <div class="pt-20">
+    <div class="mt-8 max-w-2xl mx-auto pb-16 px-4 sm:pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div class="lg:grid lg:grid-cols-12 lg:auto-rows-min lg:gap-x-8">
+        <div class="lg:col-start-6 lg:col-span-6">
+          <div class="flex justify-between">
+            <h1 class="text-xl font-medium text-gray-900">{{ book.title }}</h1>
+          </div>
+          <!-- Reviews -->
+          <div class="mt-4">
+            <h2 class="sr-only">Reviews</h2>
+            <div class="flex items-center">
+              <div class="ml-1 flex items-center">
+                <mat-icon class="text-yellow-400" *ngFor="let _ of [].constructor(generalReviewsInfo.avgRating)">star
+                </mat-icon>
+
+                <mat-icon class="text-gray-300" *ngFor="let _ of [].constructor(5 - generalReviewsInfo.avgRating)">star
+                </mat-icon>
+              </div>
+              <div aria-hidden="true" class="ml-4 text-sm text-gray-300">·</div>
+              <div class="ml-4 flex">
+                <span>{{generalReviewsInfo.avgRating}} / 5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Cover  -->
+        <div class="mt-8 lg:mt-0 lg:col-start-2 lg:col-span-4 lg:row-start-1 lg:row-span-3">
+          <img [src]="'http://localhost:3000/images/uploads/' + book?.cover" alt="" class="rounded-lg" />
+        </div>
+
+        <div class="mt-8 lg:col-span-6">
+          <!-- Size picker -->
+          <div>
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-medium text-gray-900">Book condition</h2>
+            </div>
+
+            <div id="conditions" class="flex justify-between gap-2 mt-3">
+              <button [disabled]="book.new == 0" (click)="newCondition.classList.toggle('activeSelection')"
+                class="grow relative block border w-1/2 p-4 border-gray-300 rounded-lg cursor-pointer focus:outline-none">
+                <button type="button" class="sr-only"></button>
+                <div class="text-base font-medium text-gray-900 flex justify-between mb-3">
+                  <span>New</span>
+                  <span>{{ book.price }} €</span>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  This book is completely new
+                </p>
+                <!--
+                                  Active: "border", Not Active: "border-2"
+                                  Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                -->
+                <div #newCondition class="absolute -inset-px rounded-lg border-2 border-transparent pointer-events-none"
+                  aria-hidden="true"></div>
+              </button>
+
+              <button [disabled]="book.worn == 0" (click)="wornCondition.classList.toggle('activeSelection')"
+                class="grow relative block border border-gray-300 rounded-lg w-1/2 p-4 cursor-pointer focus:outline-none w-50">
+                <div class="text-base font-medium text-gray-900 flex justify-between mb-3">
+                  <span>Worn</span>
+                  <span>{{ (book?.price! * 0.75).toFixed(2) }} €</span>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  This book might have some damage
+                </p>
+
+                <div #wornCondition
+                  class="absolute -inset-px rounded-lg border-2 border-transparent pointer-events-none"
+                  aria-hidden="true"></div>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" (click)="addItem()"
+            class="mt-8 w-full bg-orange-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-orange-700 focus:outline-none">
+            <span class="mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path
+                  d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+              </svg></span>
+            Add to cart
+          </button>
+
+          <!-- Product Sinopse -->
+          <div class="mt-10">
+            <h2 class="text-sm font-medium text-gray-900">Sinopse</h2>
+
+            <div class="mt-4 prose prose-sm text-gray-500">
+              <p class="leading-loose">
+                {{ book.synopsis }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 border-b border-gray-200 pb-10">
+        <div
+          class="bg-gray-100 px-4 py-6 sm:rounded-lg sm:p-6 md:flex md:items-center md:justify-between md:space-x-6 lg:space-x-8">
+          <h2 class="text-lg font-medium text-gray-900">Details</h2>
+          <dl
+            class="divide-y divide-gray-200 space-y-4 text-sm text-gray-600 flex-auto md:divide-y-0 md:space-y-0 md:grid md:grid-cols-6 md:gap-x-6 lg:w-4/5 lg:flex-none lg:gap-x-6">
+            <div class="flex justify-between md:block">
+              <dt class="font-medium text-gray-900">Author</dt>
+              <dd class="md:mt-1">{{ book.author }}</dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Editor</dt>
+              <dd class="md:mt-1">
+                <time datetime="2021-01-22"> {{ book.editor }}</time>
+              </dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Pages</dt>
+              <dd class="md:mt-1">{{ book.number_of_pages }}</dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">ISBN</dt>
+              <dd class="md:mt-1">{{ book.ISBN }}</dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Genre</dt>
+              <dd class="md:mt-1">{{ book.genre }}</dd>
+            </div>
+            <div class="flex justify-between pt-4 md:block md:pt-0">
+              <dt class="font-medium text-gray-900">Launch Date</dt>
+              <dd class="md:mt-1">{{ book.launch_date | date }}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Reviews -->
+      <div class="pt-10">
+        <h1 id="reviews-heading"
+          class="text-lg font-medium text-gray-900 lg:col-start-2 lg:col-span-10 lg:auto-rows-min ">
+          Reviews <span class="text-xs">({{generalReviewsInfo.numReviews}})</span>
+        </h1>
+
+        <div *ngIf="reviews?.length! == 0" class="py-5">
+          <h1 class="text-center text-gray-400 text-base">No reviews available for this book.
+          </h1>
+        </div>
+
+        <swiper *ngIf="reviews?.length! > 0" [config]="config" class="mySwiper">
+          <ng-template swiperSlide *ngFor="let review of reviews?.reverse()" class="shadow">
+            <app-book-review [review]="review"></app-book-review>
+          </ng-template>
+        </swiper>
+
+        <div class="flex justify-end">
+          <button type="button" (click)="openReviewForm()"
+            class="bg-orange-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-orange-700 focus:outline-none">
+            Submit your review!
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

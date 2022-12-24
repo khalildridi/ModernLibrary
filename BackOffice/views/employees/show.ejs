@@ -1,0 +1,32 @@
+<div class="container">
+  <h3><a href="/employees">Employee List</a></h3>
+  <h1>Employee Details</h1>
+  <table>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>:</td>
+        <td><%= employee.name %></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>:</td>
+        <td><%= employee.email %></td>
+      </tr>
+      <tr>
+        <td>Contact</td>
+        <td>:</td>
+        <td><%= employee.contact %></td>
+      </tr>
+      <tr>
+        <td>Role</td>
+        <td>:</td>
+        <td><%= employee.role %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3><a href="/employees/edit/<%= employee._id%>">EDIT</a></h3>
+  <form action="/employees/delete/<%= employee._id%>" method="post">
+    <button type="submit">DELETE</button>
+  </form>
+</div>
