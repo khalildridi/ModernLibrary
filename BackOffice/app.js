@@ -14,11 +14,11 @@ mongoose.Promise = global.Promise;
 
 // If using MongoAtlas uncomment the next line and complete the link with your clustercc
 
-mongoose.connect('mongodb+srv://khalilo:khalilo123@cluster0.f25mvmm.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true} )
-/*mongoose
+// mongoose.connect('mongodb+srv://khalilo:khalilo123@cluster0.f25mvmm.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true} )
+mongoose
 	.connect(process.env.DB_URI_ATLAS || process.env.DB_URI, { useNewUrlParser: true })
 	.then(() => console.log("connection successful"))
-	.catch((err) => console.error(err)); */
+	.catch((err) => console.error(err)); 
 
 const indexRouter = require("./routes/index");
 const employeesRouter = require("./routes/employees");
